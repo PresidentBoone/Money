@@ -1,0 +1,90 @@
+html, body { background: var(--surface-void); }
+
+.wr-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.wr-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--wash-green),
+    var(--wash-gold),
+    radial-gradient(1000px 700px at 15% 110%, color-mix(in oklab, var(--green-700) 22%, transparent), transparent 60%),
+    var(--surface-page);
+}
+
+.wr-container {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 64px) var(--container-pad) 80px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 72px);
+}
+
+.wr-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+.wr-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 920px) { .wr-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .wr-grid { grid-template-columns: 1fr; } }
+
+/* passcode gate overlay */
+.wr-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--surface-void);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.wr-gate-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+  max-width: 320px;
+  width: 100%;
+  padding: var(--space-5);
+}
+
+.wr-gate-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-hi);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  outline: none;
+  text-align: center;
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+.wr-gate-input:focus { border-color: var(--green-500); }
+
+.wr-gate-shake { animation: wr-shake 0.4s var(--ease-out); }
+
+@keyframes wr-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60%  { transform: translateX(-8px); }
+  40%, 80%  { transform: translateX(8px); }
+}
