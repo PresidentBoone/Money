@@ -1,11 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Mocks must be declared before any imports that use them
-vi.mock('@vercel/kv', () => ({
-  kv: {
-    incrbyfloat: vi.fn().mockResolvedValue(100),
-    set: vi.fn().mockResolvedValue('OK'),
-  },
+// Shared mock Redis instance — same object the handler gets via Redis.fromEnv()
+const mockRedis = {
+  incrbyfloat: vi.fn().mockResolvedValue(100),
+  set: vi.fn().mockResolvedValue('OK'),
+};
+
+vi.mock('@upstash/redis', () => ({
+  Redis: { fromEnv: () => mockRedis },
 }));
 
 const mockConstructEvent = vi.fn();
@@ -17,7 +19,7 @@ vi.mock('stripe', () => ({
 
 const { default: handler } = await import('./stripe-webhook.js');
 
-// Builds a minimal req-like object that emits 'data' + 'end' synchronously
+// Minimal req-like object that emits 'data' + 'end' synchronously
 function makeReq({ method = 'POST', sig = 'valid-sig', body = Buffer.from('{}') } = {}) {
   return {
     method,
@@ -55,37 +57,34 @@ describe('stripe-webhook handler', () => {
   });
 
   it('increments profit_total and responds 200 on payment_intent.succeeded', async () => {
-    const { kv } = await import('@vercel/kv');
     mockConstructEvent.mockReturnValueOnce({
       type: 'payment_intent.succeeded',
       data: { object: { amount: 4900, metadata: { customer_email: 'test@acme.co' }, description: null } },
     });
     const res = makeRes();
     await handler(makeReq(), res);
-    expect(kv.incrbyfloat).toHaveBeenCalledWith('profit_total', 49);
-    expect(kv.set).toHaveBeenCalledWith('last_payment', expect.objectContaining({ amount: 49, source: 'test@acme.co' }));
+    expect(mockRedis.incrbyfloat).toHaveBeenCalledWith('profit_total', 49);
+    expect(mockRedis.set).toHaveBeenCalledWith('last_payment', expect.objectContaining({ amount: 49, source: 'test@acme.co' }));
     expect(res._status).toBe(200);
     expect(res._body).toEqual({ received: true });
   });
 
   it('increments profit_total and responds 200 on invoice.paid', async () => {
-    const { kv } = await import('@vercel/kv');
     mockConstructEvent.mockReturnValueOnce({
       type: 'invoice.paid',
       data: { object: { amount_paid: 19900, customer_email: 'globex@io.com' } },
     });
     const res = makeRes();
     await handler(makeReq(), res);
-    expect(kv.incrbyfloat).toHaveBeenCalledWith('profit_total', 199);
+    expect(mockRedis.incrbyfloat).toHaveBeenCalledWith('profit_total', 199);
     expect(res._status).toBe(200);
   });
 
   it('ignores unhandled event types and returns 200', async () => {
-    const { kv } = await import('@vercel/kv');
     mockConstructEvent.mockReturnValueOnce({ type: 'customer.created', data: { object: {} } });
     const res = makeRes();
     await handler(makeReq(), res);
-    expect(kv.incrbyfloat).not.toHaveBeenCalled();
+    expect(mockRedis.incrbyfloat).not.toHaveBeenCalled();
     expect(res._status).toBe(200);
   });
 });

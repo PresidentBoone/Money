@@ -1,7 +1,8 @@
 import Stripe from 'stripe';
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const redis = Redis.fromEnv();
 
 // Reads the raw request body as a Buffer so Stripe can verify the webhook signature.
 // This works because Vercel's plain Node.js serverless runtime does NOT auto-parse
@@ -47,8 +48,8 @@ export default async function handler(req, res) {
 
   // incrbyfloat is atomic — safe if two webhooks arrive simultaneously
   await Promise.all([
-    kv.incrbyfloat('profit_total', amount),
-    kv.set('last_payment', { amount, source, time: new Date().toISOString() }),
+    redis.incrbyfloat('profit_total', amount),
+    redis.set('last_payment', { amount, source, time: new Date().toISOString() }),
   ]);
 
   return res.status(200).json({ received: true });

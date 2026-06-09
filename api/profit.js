@@ -1,4 +1,6 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
+
+const redis = Redis.fromEnv();
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -6,8 +8,8 @@ export default async function handler(req, res) {
   }
 
   const [total, lastPayment] = await Promise.all([
-    kv.get('profit_total'),
-    kv.get('last_payment'),
+    redis.get('profit_total'),
+    redis.get('last_payment'),
   ]);
 
   res.status(200).json({
