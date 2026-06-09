@@ -1,6 +1,7 @@
 import React from 'react';
 import { Ticker } from './components/money/Ticker.jsx';
 import { Badge } from './components/core/Badge.jsx';
+import { Avatar } from './components/core/Avatar.jsx';
 
 export function Header({ total, fmtMoney, lastPayment, nextMilestone, toGo }) {
   return (
@@ -27,12 +28,15 @@ export function Header({ total, fmtMoney, lastPayment, nextMilestone, toGo }) {
               : <strong style={{ color: 'var(--green-400)' }}>Every milestone cleared. We are unwell.</strong>}
           </p>
         </div>
-        <div style={{ textAlign: 'right' }}>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-2xs)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-mid)', marginBottom: 6 }}>
-            Total profit · all time
-          </div>
-          <div style={{ fontFamily: 'var(--font-numeric)', fontWeight: 'var(--fw-bold)', fontVariantNumeric: 'tabular-nums', fontSize: 'var(--fs-money)', lineHeight: 1, letterSpacing: '-0.01em', color: 'var(--green-400)', textShadow: 'var(--text-glow-green)' }}>
-            {fmtMoney(total)}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
+          <Avatar src="/cofounder-avatar.gif" size={80} ring="green" />
+          <div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-2xs)', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-mid)', marginBottom: 6 }}>
+              Total profit · all time
+            </div>
+            <div style={{ fontFamily: 'var(--font-numeric)', fontWeight: 'var(--fw-bold)', fontVariantNumeric: 'tabular-nums', fontSize: 'var(--fs-money)', lineHeight: 1, letterSpacing: '-0.01em', color: 'var(--green-400)', textShadow: 'var(--text-glow-green)' }}>
+              {fmtMoney(total)}
+            </div>
           </div>
         </div>
       </div>
