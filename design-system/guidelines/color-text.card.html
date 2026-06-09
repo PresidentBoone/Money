@@ -1,0 +1,32 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Text & Status" subtitle="Text ramp on dark + semantic status colors" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-page); display:flex; flex-direction:column; gap:14px; }
+  .stack { display:flex; flex-direction:column; gap:3px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--text-lo); text-transform:uppercase; letter-spacing:.08em; }
+  .line { font-family: var(--font-sans); font-size: 18px; font-weight:600; }
+  .row { display:flex; gap:22px; flex-wrap:wrap; }
+  .dot { display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:12px; color:var(--text-mid); }
+  .d { width:14px; height:14px; border-radius:4px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="stack"><span class="lbl">text-hi</span><span class="line" style="color:var(--text-hi)">We are so back</span></div>
+    <div class="stack"><span class="lbl">text-body</span><span class="line" style="color:var(--text-body)">We are so back</span></div>
+    <div class="stack"><span class="lbl">text-mid</span><span class="line" style="color:var(--text-mid)">We are so back</span></div>
+    <div class="stack"><span class="lbl">text-lo</span><span class="line" style="color:var(--text-lo)">We are so back</span></div>
+    <div class="stack"><span class="lbl">text-money</span><span class="line" style="color:var(--text-money)">+$1,240</span></div>
+    <div class="stack"><span class="lbl">text-cash</span><span class="line" style="color:var(--text-cash)">PREMIUM</span></div>
+  </div>
+  <div class="row">
+    <span class="dot"><span class="d" style="background:var(--danger)"></span>danger #FF5B5B</span>
+    <span class="dot"><span class="d" style="background:var(--warn)"></span>warn #F0B454</span>
+    <span class="dot"><span class="d" style="background:var(--info)"></span>info #5BB8FF</span>
+  </div>
+</body>
+</html>

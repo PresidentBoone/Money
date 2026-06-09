@@ -1,0 +1,78 @@
+<!-- @dsCard group="We're Rich" viewport="1280x900" name="We're Rich — Profit Tracker" subtitle="The full single-page internal dashboard" -->
+<!-- @startingPoint section="We're Rich" subtitle="Internal profit tracker — road, milestones, confetti" viewport="1280x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>We're Rich · SetNForget Systems</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  html, body { background: var(--surface-void); }
+  .wr-shell { position: relative; min-height: 100vh; overflow: hidden; }
+  .wr-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      var(--wash-green),
+      var(--wash-gold),
+      radial-gradient(1000px 700px at 15% 110%, color-mix(in oklab, var(--green-700) 22%, transparent), transparent 60%),
+      var(--surface-page);
+  }
+  .wr-container {
+    position: relative; z-index: 2;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px) var(--container-pad) 120px;
+    display: flex; flex-direction: column; gap: clamp(40px, 6vw, 72px);
+  }
+  .wr-eyebrow {
+    font-family: var(--font-mono); font-size: var(--fs-2xs); font-weight: var(--fw-medium);
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mid);
+  }
+  .wr-grid {
+    display: grid; gap: var(--space-4);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 920px) { .wr-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .wr-grid { grid-template-columns: 1fr; } }
+
+  /* floating simulate controls */
+  .wr-sim {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    z-index: 50; display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-radius: var(--radius-pill);
+    background: color-mix(in oklab, var(--ink-800) 86%, transparent);
+    border: 1px solid var(--border-hairline);
+    backdrop-filter: blur(12px); box-shadow: var(--shadow-lg);
+  }
+  .wr-sim-label {
+    font-family: var(--font-mono); font-size: var(--fs-2xs); letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-lo); padding-right: 4px;
+  }
+  @media (max-width: 520px) { .wr-sim { flex-wrap: wrap; justify-content: center; max-width: 92vw; } }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="#0B0F0D"/>
+      <text x="50" y="58" font-family="Arial Black, sans-serif" font-size="34" font-weight="900" fill="#34E08A" text-anchor="middle">$</text>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js?v=1"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="App.jsx"></script>
+  <script type="text/babel">
+    const App = window.WRApp;
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

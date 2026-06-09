@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Ink & Surfaces" subtitle="Near-black backgrounds with a faint green-warm tint" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-page); }
+  .row { display: flex; gap: 8px; }
+  .sw { flex: 1; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-hairline); }
+  .chip { height: 56px; }
+  .meta { padding: 7px 9px; background: var(--surface-card); }
+  .name { font-family: var(--font-mono); font-size: 10px; color: var(--text-hi); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--text-mid); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const items = [
+      ['950','#07090A'],['900 ◆','#0B0F0D'],['850','#10150F'],['800','#141A16'],
+      ['750','#1A211C'],['700','#212A23'],['600','#2B352D'],['500','#3A463C']
+    ];
+    document.getElementById('r').innerHTML = items.map(([n,h]) =>
+      `<div class="sw"><div class="chip" style="background:${h}"></div><div class="meta"><div class="name">ink-${n}</div><div class="hex">${h}</div></div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Radii" subtitle="Corner radius scale — xs → pill" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px 20px; background: var(--surface-page); }
+  .row { display: flex; gap: 18px; align-items: flex-start; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 72px; height: 56px; background: var(--surface-raised);
+         border: 1px solid var(--border-strong); border-top-left-radius: var(--r); border-top-right-radius: var(--r); }
+  .t { font-family: var(--font-mono); font-size: 10px; color: var(--text-mid); }
+  .v { font-family: var(--font-mono); font-size: 10px; color: var(--text-lo); }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const items = [['xs','6px'],['sm','10px'],['md','14px'],['lg','20px'],['xl','28px'],['pill','999px']];
+    document.getElementById('r').innerHTML = items.map(([n,v]) =>
+      `<div class="col"><div class="box" style="--r:${v}"></div><div class="t">radius-${n}</div><div class="v">${v}</div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/core/**",
+              "components/money/**",
+              "ui_kits/were-rich/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Anton|Space Grotesk|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Anton, Space Grotesk, JetBrains Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Avatar'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|alt|size|glow|ring|style|key|ref|className|style|children)$/]",
+        "message": "<Avatar> doesn't accept that prop. Declared props: src, alt, size, glow, ring, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Avatar'] > JSXAttribute[name.name='ring'] > Literal[value!=/^(?:green|gold|none)$/]",
+        "message": "<Avatar> ring must be one of 'green' | 'gold' | 'none'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|tone|dot|style|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, tone, dot, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:unlocked|locked|live|cash|neutral)$/]",
+        "message": "<Badge> tone must be one of 'unlocked' | 'locked' | 'live' | 'cash' | 'neutral'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|size|disabled|iconLeft|iconRight|style|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, variant, size, disabled, iconLeft, iconRight, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|cash|secondary|ghost)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'cash' | 'secondary' | 'ghost'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|glow|padding|interactive|style|key|ref|className|style|children)$/]",
+        "message": "<Card> doesn't accept that prop. Declared props: children, glow, padding, interactive, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute[name.name='glow'] > Literal[value!=/^(?:none|green|gold)$/]",
+        "message": "<Card> glow must be one of 'none' | 'green' | 'gold'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ConfettiBurst'] > JSXAttribute > JSXIdentifier[name!=/^(?:fire|message|duration|colors|key|ref|className|style|children)$/]",
+        "message": "<ConfettiBurst> doesn't accept that prop. Declared props: fire, message, duration, colors."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MilestoneCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:emoji|name|amount|amountLabel|subtitle|current|index|style|key|ref|className|style|children)$/]",
+        "message": "<MilestoneCard> doesn't accept that prop. Declared props: emoji, name, amount, amountLabel, subtitle, current, index, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RoadMilestone'] > JSXAttribute > JSXIdentifier[name!=/^(?:emoji|name|amount|key|ref|className|style|children)$/]",
+        "message": "<RoadMilestone> doesn't accept that prop. Declared props: emoji, name, amount."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|max|height|tone|showLabel|label|style|key|ref|className|style|children)$/]",
+        "message": "<ProgressBar> doesn't accept that prop. Declared props: value, max, height, tone, showLabel, label, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ProgressBar'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:green|gold)$/]",
+        "message": "<ProgressBar> tone must be one of 'green' | 'gold'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|delta|size|tone|align|style|key|ref|className|style|children)$/]",
+        "message": "<StatBlock> doesn't accept that prop. Declared props: label, value, delta, size, tone, align, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatBlock'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:hero|lg|md)$/]",
+        "message": "<StatBlock> size must be one of 'hero' | 'lg' | 'md'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatBlock'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:green|gold|plain)$/]",
+        "message": "<StatBlock> tone must be one of 'green' | 'gold' | 'plain'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatBlock'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center)$/]",
+        "message": "<StatBlock> align must be one of 'left' | 'center'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Ticker'] > JSXAttribute > JSXIdentifier[name!=/^(?:amount|source|ago|live|style|key|ref|className|style|children)$/]",
+        "message": "<Ticker> doesn't accept that prop. Declared props: amount, source, ago, live, style."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Avatar": {
+        "replaces": []
+      },
+      "Badge": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Card": {
+        "replaces": []
+      },
+      "ConfettiBurst": {
+        "replaces": []
+      },
+      "MilestoneCard": {
+        "replaces": []
+      },
+      "RoadMilestone": {
+        "replaces": []
+      },
+      "ProgressBar": {
+        "replaces": []
+      },
+      "StatBlock": {
+        "replaces": []
+      },
+      "Ticker": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--accent-bright",
+      "--accent-deep",
+      "--accent-glow",
+      "--avatar-size",
+      "--border-glow",
+      "--border-hairline",
+      "--border-strong",
+      "--brand-cream",
+      "--brand-navy",
+      "--bw-2",
+      "--bw-3",
+      "--bw-hair",
+      "--cash",
+      "--container-max",
+      "--container-pad",
+      "--danger",
+      "--dur-base",
+      "--dur-fast",
+      "--dur-slow",
+      "--dur-travel",
+      "--ease-bounce",
+      "--ease-in-out",
+      "--ease-out",
+      "--focus-ring",
+      "--font-display",
+      "--font-mono",
+      "--font-numeric",
+      "--font-sans",
+      "--fs-2xl",
+      "--fs-2xs",
+      "--fs-d1",
+      "--fs-d2",
+      "--fs-lg",
+      "--fs-md",
+      "--fs-mega",
+      "--fs-money",
+      "--fs-sm",
+      "--fs-xl",
+      "--fs-xs",
+      "--fw-bold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--glow-avatar",
+      "--glow-gold",
+      "--glow-green",
+      "--glow-green-soft",
+      "--gold-300",
+      "--gold-400",
+      "--gold-500",
+      "--gold-600",
+      "--gold-700",
+      "--grain-url",
+      "--green-200",
+      "--green-300",
+      "--green-400",
+      "--green-500",
+      "--green-600",
+      "--green-700",
+      "--green-900",
+      "--info",
+      "--ink-500",
+      "--ink-600",
+      "--ink-700",
+      "--ink-750",
+      "--ink-800",
+      "--ink-850",
+      "--ink-900",
+      "--ink-950",
+      "--lh-loose",
+      "--lh-normal",
+      "--lh-snug",
+      "--lh-tight",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--radius-xl",
+      "--radius-xs",
+      "--road-bed",
+      "--road-edge",
+      "--road-fill",
+      "--road-height",
+      "--road-line",
+      "--road-locked",
+      "--shadow-card",
+      "--shadow-lg",
+      "--shadow-md",
+      "--shadow-sm",
+      "--space-0",
+      "--space-1",
+      "--space-10",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--surface-card",
+      "--surface-chip",
+      "--surface-page",
+      "--surface-raised",
+      "--surface-sunken",
+      "--surface-void",
+      "--text-100",
+      "--text-200",
+      "--text-300",
+      "--text-400",
+      "--text-500",
+      "--text-body",
+      "--text-cash",
+      "--text-faint",
+      "--text-glow-gold",
+      "--text-glow-green",
+      "--text-hi",
+      "--text-lo",
+      "--text-mid",
+      "--text-money",
+      "--text-on-gold",
+      "--text-on-green",
+      "--tracking-mega",
+      "--tracking-mega-wide",
+      "--tracking-normal",
+      "--tracking-tight",
+      "--tracking-wide",
+      "--warn",
+      "--wash-gold",
+      "--wash-green",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--ink-950": "color",
+      "--ink-900": "color",
+      "--ink-850": "color",
+      "--ink-800": "color",
+      "--ink-750": "color",
+      "--ink-700": "color",
+      "--ink-600": "color",
+      "--ink-500": "color",
+      "--green-200": "color",
+      "--green-300": "color",
+      "--green-400": "color",
+      "--green-500": "color",
+      "--green-600": "color",
+      "--green-700": "color",
+      "--green-900": "color",
+      "--gold-300": "color",
+      "--gold-400": "color",
+      "--gold-500": "color",
+      "--gold-600": "color",
+      "--gold-700": "color",
+      "--brand-navy": "color",
+      "--brand-cream": "color",
+      "--white": "color",
+      "--text-100": "font",
+      "--text-200": "font",
+      "--text-300": "font",
+      "--text-400": "font",
+      "--text-500": "font",
+      "--danger": "color",
+      "--warn": "color",
+      "--info": "color",
+      "--surface-page": "color",
+      "--surface-void": "color",
+      "--surface-sunken": "color",
+      "--surface-card": "color",
+      "--surface-raised": "color",
+      "--surface-chip": "color",
+      "--border-hairline": "color",
+      "--border-strong": "color",
+      "--border-glow": "color",
+      "--text-hi": "font",
+      "--text-body": "font",
+      "--text-mid": "font",
+      "--text-lo": "font",
+      "--text-faint": "font",
+      "--text-money": "font",
+      "--text-cash": "font",
+      "--text-on-green": "font",
+      "--text-on-gold": "font",
+      "--accent": "color",
+      "--accent-bright": "color",
+      "--accent-glow": "color",
+      "--accent-deep": "color",
+      "--cash": "color",
+      "--road-bed": "color",
+      "--road-line": "color",
+      "--road-edge": "color",
+      "--road-fill": "color",
+      "--road-locked": "color",
+      "--font-display": "font",
+      "--font-sans": "font",
+      "--font-numeric": "font",
+      "--font-mono": "font",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--fs-mega": "font",
+      "--fs-money": "font",
+      "--fs-d1": "font",
+      "--fs-d2": "spacing",
+      "--fs-2xl": "spacing",
+      "--fs-xl": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-md": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-xs": "spacing",
+      "--fs-2xs": "spacing",
+      "--lh-tight": "font",
+      "--lh-snug": "font",
+      "--lh-normal": "font",
+      "--lh-loose": "font",
+      "--tracking-mega": "font",
+      "--tracking-tight": "font",
+      "--tracking-normal": "font",
+      "--tracking-wide": "font",
+      "--tracking-mega-wide": "font",
+      "--space-0": "spacing",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--space-10": "spacing",
+      "--radius-xs": "radius",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-xl": "radius",
+      "--radius-pill": "radius",
+      "--bw-hair": "spacing",
+      "--bw-2": "spacing",
+      "--bw-3": "spacing",
+      "--container-max": "spacing",
+      "--container-pad": "spacing",
+      "--road-height": "spacing",
+      "--avatar-size": "spacing",
+      "--shadow-sm": "shadow",
+      "--shadow-md": "shadow",
+      "--shadow-lg": "shadow",
+      "--shadow-card": "shadow",
+      "--glow-green": "color",
+      "--glow-green-soft": "color",
+      "--glow-gold": "color",
+      "--glow-avatar": "color",
+      "--text-glow-green": "font",
+      "--text-glow-gold": "font",
+      "--focus-ring": "color",
+      "--ease-out": "other",
+      "--ease-in-out": "other",
+      "--ease-bounce": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other",
+      "--dur-travel": "other",
+      "--grain-url": "other",
+      "--wash-green": "color",
+      "--wash-gold": "color"
+    },
+    "fontFamilies": [
+      "Anton",
+      "JetBrains Mono",
+      "Space Grotesk"
+    ]
+  }
+}

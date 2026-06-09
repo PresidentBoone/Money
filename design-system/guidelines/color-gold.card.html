@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Cash Gold" subtitle="SetNForget brand orange — the premium / cash accent" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-page); }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-hairline); }
+  .chip { height: 64px; }
+  .meta { padding: 8px 10px; background: var(--surface-card); }
+  .name { font-family: var(--font-mono); font-size: 11px; color: var(--text-hi); letter-spacing: .02em; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--text-mid); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const items = [
+      ['300','#F6C778'],['400','#F0B454'],['500 ◆','#ECA42F'],
+      ['600','#D88A1A'],['700','#A9650C']
+    ];
+    document.getElementById('r').innerHTML = items.map(([n,h]) =>
+      `<div class="sw"><div class="chip" style="background:${h}"></div><div class="meta"><div class="name">gold-${n}</div><div class="hex">${h}</div></div></div>`
+    ).join('');
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Core — Button · Badge · Avatar · Card" subtitle="Actions, status pills, avatar ring, surfaces" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 22px; background: var(--surface-page); }
+  .wrap { display: flex; flex-direction: column; gap: 18px; }
+  .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--text-lo); text-transform: uppercase; letter-spacing: .08em; width: 100%; }
+</style>
+</head>
+<body>
+  <div id="root" class="wrap"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js?v=1"></script>
+  <script type="text/babel">
+    const { Button, Badge, Avatar, Card } = window.WeReRichSetNForgetDesignSystem_60fa1b;
+    function Demo() {
+      return (
+        <>
+          <div className="row">
+            <span className="lbl">Buttons</span>
+            <Button variant="primary">WE'RE EATING</Button>
+            <Button variant="cash">Go Premium</Button>
+            <Button variant="secondary">Ledger</Button>
+            <Button variant="ghost">Dismiss</Button>
+            <Button variant="primary" size="sm">Small</Button>
+            <Button variant="primary" disabled>Locked</Button>
+          </div>
+          <div className="row">
+            <span className="lbl">Badges</span>
+            <Badge tone="unlocked" dot>Unlocked</Badge>
+            <Badge tone="locked">Locked</Badge>
+            <Badge tone="live">Live from Stripe</Badge>
+            <Badge tone="cash">Premium</Badge>
+            <Badge tone="neutral">42% there</Badge>
+          </div>
+          <div className="row">
+            <span className="lbl">Avatar &amp; Card</span>
+            <Avatar src="../../assets/cofounder-avatar.gif" size={64} ring="green" />
+            <Avatar src="../../assets/cofounder-avatar.gif" size={48} ring="gold" />
+            <Card glow="green" style={{flex:1, minWidth:200}}>
+              <div style={{fontFamily:'var(--font-display)', fontSize:22, color:'var(--text-hi)', textTransform:'uppercase'}}>Office Space</div>
+              <div style={{fontFamily:'var(--font-mono)', fontSize:12, color:'var(--text-mid)', marginTop:4}}>Unlocked · $45,000</div>
+            </Card>
+          </div>
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

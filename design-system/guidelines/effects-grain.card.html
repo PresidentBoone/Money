@@ -1,0 +1,25 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Grain & Money Wash" subtitle="Background texture + radial glow washes" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px 20px; background: var(--surface-page); }
+  .row { display: flex; gap: 16px; }
+  .panel { position: relative; flex: 1; height: 104px; border-radius: var(--radius-md); overflow: hidden;
+           border: 1px solid var(--border-hairline); display: flex; align-items: flex-end; padding: 10px; }
+  .p1 { background: var(--ink-900); }
+  .p2 { background: var(--ink-900) var(--wash-green); }
+  .p3 { background: var(--ink-900) var(--wash-gold); }
+  .t { position: relative; z-index: 2; font-family: var(--font-mono); font-size: 10px; color: var(--text-mid); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="panel p1"><div class="grain-layer" style="opacity:.12"></div><span class="t">grain-layer (×2 opacity)</span></div>
+    <div class="panel p2"><div class="grain-layer"></div><span class="t">wash-green</span></div>
+    <div class="panel p3"><div class="grain-layer"></div><span class="t">wash-gold</span></div>
+  </div>
+</body>
+</html>

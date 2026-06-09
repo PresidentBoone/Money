@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" viewport="700x720" name="Money — Road · Milestone · Stat · Progress · Ticker" subtitle="The product-specific components" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 22px; background: var(--surface-page); }
+  .wrap { display: flex; flex-direction: column; gap: 22px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--text-lo); text-transform: uppercase; letter-spacing: .08em; }
+</style>
+</head>
+<body>
+  <div id="root" class="wrap"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js?v=1"></script>
+  <script type="text/babel">
+    const { MilestoneRoad, MilestoneCard, StatBlock, ProgressBar, Ticker } = window.WeReRichSetNForgetDesignSystem_60fa1b;
+    const MILES = [
+      { emoji: '🍔', name: "McD's", amount: 75 },
+      { emoji: '💻', name: 'Claude Max', amount: 500 },
+      { emoji: '🤠', name: 'Montana', amount: 3000 },
+      { emoji: '🇮🇳', name: 'Hire Dev', amount: 12000 },
+      { emoji: '🏢', name: 'Office', amount: 45000 },
+      { emoji: '✈️', name: 'Jet', amount: 500000 },
+    ];
+    function Demo() {
+      const current = 1840;
+      return (
+        <>
+          <div className="row" style={{justifyContent:'space-between'}}>
+            <StatBlock label="Total profit" value="$1,840" delta="+$49 just now" size="lg" />
+            <Ticker amount="+$49.00" source="acme.co" ago="2 min ago" />
+          </div>
+          <div>
+            <div className="lbl" style={{marginBottom:8}}>MilestoneRoad</div>
+            <MilestoneRoad milestones={MILES} current={current} avatarSrc="../../assets/cofounder-avatar.gif" height={220} />
+          </div>
+          <div>
+            <div className="lbl" style={{marginBottom:8}}>ProgressBar — green &amp; gold</div>
+            <div style={{display:'flex', flexDirection:'column', gap:10}}>
+              <ProgressBar value={1840} max={3000} showLabel />
+              <ProgressBar value={75} max={75} tone="gold" label="MAXED" />
+            </div>
+          </div>
+          <div>
+            <div className="lbl" style={{marginBottom:8}}>MilestoneCard — unlocked vs locked</div>
+            <div className="grid2">
+              <MilestoneCard index={1} emoji="🍔" name="McDonald's" amount={75} current={current}
+                subtitle="Six double cheeseburgers between three grown men. We earned this." />
+              <MilestoneCard index={3} emoji="🤠" name="Montana Trip" amount={3000} current={current}
+                subtitle="Big sky, bigger margins. Yellowstone wants our ARR." />
+            </div>
+          </div>
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

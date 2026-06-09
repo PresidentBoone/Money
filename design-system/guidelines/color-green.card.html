@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Money Green" subtitle="Primary accent — jade/emerald, premium not tacky" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 18px; background: var(--surface-page); }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-hairline); }
+  .chip { height: 64px; }
+  .meta { padding: 8px 10px; background: var(--surface-card); }
+  .name { font-family: var(--font-mono); font-size: 11px; color: var(--text-hi); letter-spacing: .02em; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--text-mid); text-transform: uppercase; }
+</style>
+</head>
+<body>
+  <div class="row" id="r"></div>
+  <script>
+    const items = [
+      ['200','#B6F5D2'],['300','#74ECAC'],['400','#34E08A'],
+      ['500 ◆','#15C672'],['600','#0EA05C'],['700','#0A7846']
+    ];
+    document.getElementById('r').innerHTML = items.map(([n,h]) =>
+      `<div class="sw"><div class="chip" style="background:${h}"></div><div class="meta"><div class="name">green-${n}</div><div class="hex">${h}</div></div></div>`
+    ).join('');
+  </script>
+</body>
+</html>
