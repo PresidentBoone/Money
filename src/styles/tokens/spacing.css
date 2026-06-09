@@ -1,0 +1,38 @@
+/* ============================================================
+   WE'RE RICH — SPACING, RADII, LAYOUT TOKENS
+   8px base grid.
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ---- */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---- Radii ---- */
+  --radius-xs:  6px;
+  --radius-sm:  10px;
+  --radius-md:  14px;   /* default card */
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-pill: 999px;
+
+  /* ---- Border widths ---- */
+  --bw-hair: 1px;
+  --bw-2:    2px;
+  --bw-3:    3px;
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --container-pad: clamp(16px, 4vw, 48px);
+  --road-height: 220px;
+  --avatar-size: 72px;
+}

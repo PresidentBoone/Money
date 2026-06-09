@@ -1,0 +1,68 @@
+/* ============================================================
+   WE'RE RICH — TYPOGRAPHY TOKENS
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;       /* loud titles */
+  --font-sans:    'Space Grotesk', system-ui, sans-serif;    /* UI + numbers */
+  --font-numeric: 'Space Grotesk', system-ui, sans-serif;    /* money figures (use tabular-nums) */
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace; /* ticker / system */
+
+  /* ---- Weights ---- */
+  --fw-regular: 400;  /* @kind font */
+  --fw-medium:  500;  /* @kind font */
+  --fw-semibold:600;  /* @kind font */
+  --fw-bold:    700;  /* @kind font */
+
+  /* ---- Display sizes (clamped, hero-scale) ---- */
+  --fs-mega:   clamp(4.5rem, 12vw, 11rem); /* @kind font */
+  --fs-money:  clamp(3rem, 8vw, 7rem);     /* @kind font */
+  --fs-d1:     clamp(2.5rem, 5vw, 4rem);   /* @kind font */
+  --fs-d2:     2.25rem;                       /* milestone name */
+
+  /* ---- Text sizes ---- */
+  --fs-2xl: 2rem;       /* 32 */
+  --fs-xl:  1.5rem;     /* 24 */
+  --fs-lg:  1.25rem;    /* 20 */
+  --fs-md:  1rem;       /* 16 */
+  --fs-sm:  0.875rem;   /* 14 */
+  --fs-xs:  0.75rem;    /* 12 */
+  --fs-2xs: 0.6875rem;  /* 11 — micro labels */
+
+  /* ---- Line heights ---- */
+  --lh-tight:  0.92;  /* @kind font */
+  --lh-snug:   1.1;   /* @kind font */
+  --lh-normal: 1.45;  /* @kind font */
+  --lh-loose:  1.6;   /* @kind font */
+
+  /* ---- Tracking ---- */
+  --tracking-mega:  -0.02em;  /* tight display @kind font */
+  --tracking-tight: -0.01em;  /* @kind font */
+  --tracking-normal: 0;       /* @kind font */
+  --tracking-wide:  0.08em;   /* eyebrows / mono labels @kind font */
+  --tracking-mega-wide: 0.22em; /* SYSTEMS-style spacing @kind font */
+}
+
+/* ---- Convenience text classes (optional helpers) ---- */
+.t-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+.t-mega {
+  font-family: var(--font-display);
+  font-size: var(--fs-mega);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-mega);
+  text-transform: uppercase;
+}
+.t-money {
+  font-family: var(--font-numeric);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-tight);
+}

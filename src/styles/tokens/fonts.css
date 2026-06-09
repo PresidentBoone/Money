@@ -1,0 +1,12 @@
+/* ============================================================
+   WE'RE RICH — FONT FACES
+   Loaded from Google Fonts CDN. If you self-host, replace the
+   @import below with local @font-face rules pointing at the
+   shipped binaries.
+
+   Anton         — loud condensed display ("WE'RE RICH", milestone names)
+   Space Grotesk — clean UI sans + big money numbers (tabular)
+   JetBrains Mono— ticker, timestamps, mile markers, system labels
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');

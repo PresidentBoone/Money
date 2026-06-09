@@ -1,0 +1,57 @@
+/* ============================================================
+   WE'RE RICH — EFFECTS: shadows, glows, grain, motion
+   ============================================================ */
+
+:root {
+  /* ---- Elevation shadows (on dark, mostly black + subtle green spill) ---- */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.5);
+  --shadow-md:  0 6px 20px rgba(0,0,0,0.45);
+  --shadow-lg:  0 18px 50px rgba(0,0,0,0.55);
+  --shadow-card: 0 2px 0 rgba(255,255,255,0.02) inset, 0 12px 32px rgba(0,0,0,0.5);
+
+  /* ---- Glows (the money money money) ---- */
+  --glow-green:  0 0 0 1px color-mix(in oklab, var(--green-500) 50%, transparent),
+                 0 0 24px color-mix(in oklab, var(--green-500) 45%, transparent),
+                 0 0 60px color-mix(in oklab, var(--green-500) 22%, transparent);
+  --glow-green-soft: 0 0 32px color-mix(in oklab, var(--green-500) 28%, transparent);
+  --glow-gold:   0 0 0 1px color-mix(in oklab, var(--gold-500) 55%, transparent),
+                 0 0 26px color-mix(in oklab, var(--gold-500) 40%, transparent);
+  --glow-avatar: 0 0 0 3px var(--ink-900),
+                 0 0 0 5px var(--green-400),
+                 0 0 30px color-mix(in oklab, var(--green-400) 60%, transparent);
+
+  /* Text glow for big numbers */
+  --text-glow-green: 0 0 28px color-mix(in oklab, var(--green-400) 45%, transparent);
+  --text-glow-gold:  0 0 24px color-mix(in oklab, var(--gold-500) 40%, transparent);
+
+  /* ---- Focus ring ---- */
+  --focus-ring: 0 0 0 2px var(--ink-900), 0 0 0 4px var(--green-400);
+
+  /* ---- Motion: easings + durations ---- */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);     /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);    /* @kind other */
+  --ease-bounce:cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --dur-fast:   140ms;   /* @kind other */
+  --dur-base:   260ms;   /* @kind other */
+  --dur-slow:   520ms;   /* @kind other */
+  --dur-travel: 1100ms;  /* @kind other */
+
+  /* ---- Background grain overlay (drop on a ::before, low opacity) ---- */
+  --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"); /* @kind other */
+
+  /* ---- Radial money wash for page backgrounds ---- */
+  --wash-green: radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--green-500) 14%, transparent), transparent 70%);
+  --wash-gold:  radial-gradient(800px 400px at 90% 0%, color-mix(in oklab, var(--gold-500) 10%, transparent), transparent 60%);
+}
+
+/* Reusable grain layer — apply class to a full-bleed element */
+.grain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grain-url);
+  background-size: 180px 180px;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}

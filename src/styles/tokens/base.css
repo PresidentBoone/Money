@@ -1,0 +1,41 @@
+/* ============================================================
+   WE'RE RICH — BASE / RESET
+   Sensible defaults on dark. Keep light: components own their look.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, p, figure { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: color-mix(in oklab, var(--green-500) 40%, transparent);
+  color: var(--text-hi);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-xs);
+}
+
+/* Tabular figures helper for any money number */
+.tnum { font-variant-numeric: tabular-nums; }

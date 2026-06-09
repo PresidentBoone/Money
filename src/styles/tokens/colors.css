@@ -1,0 +1,92 @@
+/* ============================================================
+   WE'RE RICH — COLOR TOKENS
+   Dark, money-obsessed, premium-not-tacky.
+   Base palette (raw values) + semantic aliases.
+   ============================================================ */
+
+:root {
+  /* ---- Ink: near-black backgrounds with a faint green-warm tint ---- */
+  --ink-950: #07090A;   /* deepest / page void */
+  --ink-900: #0B0F0D;   /* page background */
+  --ink-850: #10150F;   /* sunken wells, road bed */
+  --ink-800: #141A16;   /* card surface */
+  --ink-750: #1A211C;   /* elevated card / hover */
+  --ink-700: #212A23;   /* raised chips */
+  --ink-600: #2B352D;   /* hairline borders */
+  --ink-500: #3A463C;   /* strong borders / dividers */
+
+  /* ---- Money green: jade/emerald, the primary accent ---- */
+  --green-200: #B6F5D2; /* brightest highlight / confetti */
+  --green-300: #74ECAC; /* glow, focus ring */
+  --green-400: #34E08A; /* bright accent, active fill */
+  --green-500: #15C672; /* PRIMARY money green */
+  --green-600: #0EA05C; /* pressed / deep fill */
+  --green-700: #0A7846; /* darkest usable green */
+  --green-900: #06301E; /* green-tinted wash on dark */
+
+  /* ---- Gold: SetNForget brand orange, used as the "cash / premium" accent ---- */
+  --gold-300: #F6C778;
+  --gold-400: #F0B454;
+  --gold-500: #ECA42F; /* SetNForget brand orange */
+  --gold-600: #D88A1A;
+  --gold-700: #A9650C;
+
+  /* ---- Brand ink (logo navy) + cream ---- */
+  --brand-navy: #212430;
+  --brand-cream: #FEFDF9;
+
+  /* ---- Neutrals / text ---- */
+  --white: #F4F8F3;
+  --text-100: #EEF3EC; /* hi-contrast headings */
+  --text-200: #C3CDC4; /* default body */
+  --text-300: #8C988E; /* secondary / labels */
+  --text-400: #5E695F; /* muted / disabled */
+  --text-500: #3E463F; /* faintest / locked */
+
+  /* ---- Semantic status ---- */
+  --danger: #FF5B5B;
+  --warn:   #F0B454;
+  --info:   #5BB8FF;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in components
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-page:    var(--ink-900);
+  --surface-void:    var(--ink-950);
+  --surface-sunken:  var(--ink-850);
+  --surface-card:    var(--ink-800);
+  --surface-raised:  var(--ink-750);
+  --surface-chip:    var(--ink-700);
+
+  /* Borders */
+  --border-hairline: var(--ink-600);
+  --border-strong:   var(--ink-500);
+  --border-glow:     color-mix(in oklab, var(--green-500) 55%, transparent);
+
+  /* Text */
+  --text-hi:   var(--text-100);
+  --text-body: var(--text-200);
+  --text-mid:  var(--text-300);
+  --text-lo:   var(--text-400);
+  --text-faint:var(--text-500);
+  --text-money:var(--green-400);
+  --text-cash: var(--gold-400);
+  --text-on-green: #04210F;
+  --text-on-gold:  #2A1A02;
+
+  /* Accents */
+  --accent:        var(--green-500);
+  --accent-bright: var(--green-400);
+  --accent-glow:   var(--green-300);
+  --accent-deep:   var(--green-700);
+  --cash:          var(--gold-500);
+
+  /* Road */
+  --road-bed:    #0E120E;
+  --road-line:   var(--gold-400);   /* dashed center line */
+  --road-edge:   var(--ink-600);
+  --road-fill:   var(--green-500);   /* progress travelled */
+  --road-locked: var(--ink-700);
+}
